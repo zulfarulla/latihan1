@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta name="viewport" content="device-width, intial-scale=1">
+	<link rel="stylesheet" href="w3.css">
+	<title>Quiz</title>
+</head>
+<body>
+	<form name="form">
+	<center>
+	<div class="w3-container w3-panel">
+		<div class="w3-container w3-panel w3-yellow">
+			<h1>PROGRAM GAJI PEGAWAI
+		</div>
+		<div class="w3-container w3-panel w3-green">
+			<table>
+				<tr><td>NAMA PEGAWAI<td>:<input type="text" name="pegawai">
+				<tr><td>BAGIAN<td>:<input type="radio" name="bagian" value="keuangan">KEUANGAN
+				<input type="radio" name="bagian" value="produksi">PRODUKSI
+				<input type="radio" name="bagian" value="pemasaran">PEMASARAN
+				<tr><td>GOLONGAN<td>:<select name=golongan>
+				<option name="golongan" value="A">A
+				<option name="golongan" value="B">B
+				<option name="golongan" value="C">C
+				<tr><td>TAHUN MASUK<td>:<input type="text" name="tahun" style="width: 55px">
+				<tr><td>TUNJANGAN<td>:<input type="checkbox" name="makanan" >MAKANAN
+				<tr><td><td>:<input type="checkbox" name="kesehatan" >KESEHATAN
+				<tr><td><td>:<input type="checkbox" name="keluarga">KELUARGA
+				<tr><td colspan=5><hr>
+				<tr><td>NAMA PEGAWAI<td>:<input type="text" name="namaPegawai" disabled="">
+				<tr><td>GAJI POKOK<td>:<input type="text" name="gajipokok" disabled="">
+				<tr><td>LAMA KERJA<td>:<input type="text" name="lamaKerja" disabled="">
+				<tr><td>TUNJANGAN<td>:<input type="text" name="tunjangan1" disabled="">
+				<tr><td>TUNJANGAN LAMA KERJA<td>:<input type="text" name="tlk" disabled="">
+				<tr><td>TOTAL GAJI<td>:<input type="text" name="total" disabled="">
+			</table>
+		</div>
+		<div class="w3-container w3-panel w3-purple">
+				<input type="button" onclick="proses()" value="PROSES">
+				<button class="w3-blue" onclick="riset()">RISET</button>
+			
+		</div>
+	</div>
+	
+	<script>
+		function proses()
+		{
+			var bagian = document.form.bagian.value;
+			var golongan = document.form.golongan.value;
+			var tahun = document.form.tahun.value;
+			var tahun = 2024-tahun;
+			var harga = 0;
+			var bonus = 0;
+			var bonuss = 0;
+			var namaPegawai = document.form.pegawai.value;
+			
+			if (bagian == "keuangan"){
+					if (golongan == "A") {harga = 5000000;}
+					if (golongan == "B") {harga = 6000000;}
+					if (golongan == "C") {harga = 7000000;}
+				}
+			if (bagian == "produksi"){
+					if (golongan == "A") {harga = 4000000;}
+					if (golongan == "B") {harga = 5000000;}
+					if (golongan == "C") {harga = 6000000;}
+				}
+			if (bagian == "pemasaran"){
+					if (golongan == "A") {harga = 3000000;}
+					if (golongan == "B") {harga = 4000000;}
+					if (golongan == "C") {harga = 5000000;}
+				}
+				
+			if (document.form.makanan.checked){
+				bonus+=0.1;
+			}
+			if (document.form.kesehatan.checked){
+				bonus+=0.2;
+			}
+			if (document.form.keluarga.checked){
+				bonus+=0.3;
+			}
+			
+			if (tahun>3){
+				bonuss =0.1;
+			}
+			
+			document.form.namaPegawai.value=namaPegawai;
+			var lamaKerja = tahun
+			document.form.lamaKerja.value=lamaKerja;
+			var gajipokok = document.form.gajipokok.value;
+			var tunjangan1 = document.form.tunjangan1.value;
+			var tlk = document.form.tlk.value;
+			var total = document.form.total.value;
+			gajipokok = harga;
+			document.form.gajipokok.value=gajipokok;
+			
+			tunjangan1 = bonus * gajipokok
+			document.form.tunjangan1.value=tunjangan1;
+			
+			tlk = bonuss * gajipokok
+			document.form.tlk.value=tlk;
+			
+			total = gajipokok + tunjangan1 + tlk;
+			document.form.total.value=total;
+			
+		}	
+	</script>
+</body>
+</html>
